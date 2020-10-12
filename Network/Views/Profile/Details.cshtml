@@ -1,0 +1,44 @@
+﻿@model Network.Domain.Entities.Profile
+
+@{
+    ViewData["Title"] = @ViewBag.Profile.UserName + " details";
+}
+
+<h1> @ViewBag.Profile.UserName</h1>
+
+<p>
+    <a asp-controller="Post" asp-action="Create" asp-route-id="@ViewBag.Profile._id">Create New</a>
+</p>
+
+           
+        @*
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        *@
+
+<div>
+    <ul class="big-image-list">
+        @foreach (Post entity in ViewBag.Posts)
+        {
+            <li>
+
+                <a asp-area="" asp-controller="Post" asp-action="PhotoZoom" asp-route-id="@entity._id">
+
+                    <img src="~/images/@entity.ImagePath" alt="" class="left" />
+                </a>
+                <h4>@entity.Comment</h4>
+
+                <a asp-controller="Post" asp-action="Delete" asp-route-id="@entity._id" >Delete this post</a>
+            </li>
+        }
+    </ul>
+
+ </div>
+
+
+<div>
+    <a asp-action="Index" >Back to List</a>
+</div>

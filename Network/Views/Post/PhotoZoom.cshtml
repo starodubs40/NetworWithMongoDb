@@ -1,0 +1,16 @@
+﻿
+@model Network.Domain.Entities.Post
+
+@{
+    ViewData["Title"] = "PhotoZoom";
+}
+
+<div>
+
+    <li>
+        <a asp-area="">
+            <img src="~/images/@Model.ImagePath" alt="" class="left" />
+        </a>
+    </li>
+
+</div>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Network.Domain.Entities.Profile>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div>
+    @if (Model.Any())
+    {
+        <ul class="big-image-list">
+            @foreach (Profile entity in Model)
+            {
+
+                <li>
+                    <h4>@entity.UserName</h4>
+
+                    <a asp-area="" asp-controller="Profile" asp-action="Details" asp-route-id="@entity._id">
+
+                        <img src="~/images/@entity.TitleImagePath" alt="" class="left" />
+
+                    </a>
+
+               
+
+                </li>
+            }
+
+        </ul>
+    }
+</div>
