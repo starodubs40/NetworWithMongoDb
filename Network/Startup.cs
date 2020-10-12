@@ -23,7 +23,7 @@ namespace Network
       
         public void ConfigureServices(IServiceCollection services)
         {
-            //подключаем конфиг из appsetting.json
+            
             Configuration.Bind("Project", new Config());
 
             services.AddControllersWithViews();
@@ -37,24 +37,22 @@ namespace Network
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //!!! порядок регистрации middleware очень важен
-
-            //в процессе разработки нам важно видеть какие именно ошибки
+            
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
-            //подключаем поддержку статичных файлов в приложении (css, js и т.д.)
+          
             app.UseStaticFiles();
 
-            //подключаем систему маршрутизации
+            
             app.UseRouting();
 
-            //подключаем аутентификацию и авторизацию
+    
             app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
 
-            //регистриуруем нужные нам маршруты (ендпоинты)
+     
             app.UseEndpoints(endpoints =>
             {
                
